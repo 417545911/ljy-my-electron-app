@@ -1,3 +1,4 @@
+require('dotenv')
 const { app, BrowserWindow } = require("electron");
 
 const createWindow = () => {
