@@ -1,48 +1,36 @@
-const { FusesPlugin } = require('@electron-forge/plugin-fuses');
-const { FuseV1Options, FuseVersion } = require('@electron/fuses');
+const { FusesPlugin } = require("@electron-forge/plugin-fuses");
+const { FuseV1Options, FuseVersion } = require("@electron/fuses");
 
 module.exports = {
   packagerConfig: {
     asar: true,
+    icon: "./public/appIcon.ico",
   },
   rebuildConfig: {},
   makers: [
     {
-      name: '@electron-forge/maker-squirrel',
+      name: "@electron-forge/maker-squirrel",
       config: {
-        // certificateFile: './cert.pfx',
-        // certificatePassword: process.env.CERTIFICATE_PASSWORD
+        iconUrl: "https://bondhub.sxzq.com/favicon.ico",
+        setupIcon: "./public/appIcon.ico",
       },
     },
     {
-      name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      name: "@electron-forge/maker-zip",
+      platforms: ["darwin"],
     },
     {
-      name: '@electron-forge/maker-deb',
-      config: {},
+      name: "@electron-forge/maker-deb",
+      config: { icon: "./public/appIcon.ico" },
     },
     {
-      name: '@electron-forge/maker-rpm',
-      config: {},
+      name: "@electron-forge/maker-rpm",
+      config: { icon: "./public/appIcon.ico" },
     },
-  ],
-  publishers: [
-    {
-      name: '@electron-forge/publisher-github',
-      config: {
-        repository: {
-          owner: '417545911',
-          name: 'ljy-my-electron-app'
-        },
-        prerelease: false,
-        draft: true
-      }
-    }
   ],
   plugins: [
     {
-      name: '@electron-forge/plugin-auto-unpack-natives',
+      name: "@electron-forge/plugin-auto-unpack-natives",
       config: {},
     },
     // Fuses are used to enable/disable various Electron functionality
